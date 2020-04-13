@@ -9,10 +9,13 @@ const client = new Client({
 
 module.exports = {
     getBuyPrice: async () => new Promise((resolve, reject) => {
-        const currencyPair = 'BTC-USD'
-
-        return client.getBuyPrice({ 'currencyPair': currencyPair }, (err, obj) => {
-            err ? reject(err) : resolve(obj)
+        return client.getBuyPrice({ 'currencyPair': config.CURRENCY_PAIR }, (err, obj) => {
+            err ? reject(err) : resolve(obj.data)
+        })
+    }),
+    getSellPrice: async () => new Promise((resolve, reject) => {
+        return client.getSellPrice({ 'currencyPair' : config.CURRENCY_PAIR }, (err, obj) => {
+            err ? reject(err) : resolve(obj.data)
         })
     })
 }
