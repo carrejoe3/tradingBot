@@ -7,6 +7,7 @@ const app = express()
 const pricing = require('./pricing')
 const port = process.env.PORT || 5000
 const login = require('./routes/api/users')
+const priceModel = require('./models/price')
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -22,14 +23,9 @@ const mainLoop = async () => {
     const time = 10 * 1000
 
     try {
-        const buyPrice = await pricing.getBuyPrice()
-        console.log(`buy: ${buyPrice.amount}`)
-
-        const sellPrice = await pricing.getSellPrice()
-        console.log(`sell: ${sellPrice.amount}`)
-
-        const spot = await pricing.getSpotPrice()
-        console.log(`spot: ${spot.amount}`)
+        const prices = await pricing.getPrices()
+        const price = await priceModel.create(prices)
+        console.log('Price obtained')
     } catch (error) {
         console.log(error)
     }

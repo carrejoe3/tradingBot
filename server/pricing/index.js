@@ -22,5 +22,27 @@ module.exports = {
         return client.getSpotPrice({ 'currencyPair' : config.CURRENCY_PAIR }, (err, obj) => {
             err ? reject(err) : resolve(obj.data)
         })
-    })
+    }),
+    getPrices: async function() {
+        const results = await Promise.all([this.getSpotPrice(), this.getBuyPrice(), this.getSellPrice()])
+        const ordering = ['spot', 'buy', 'sell']
+        const dict = {}
+
+        for (let i in ordering) {
+            const order = ordering[i]
+            const result = results[i]
+            dict[order] = result
+        }
+
+        const data = {
+            base: dict['buy']['base'],
+            currency: dict['buy']['currency'],
+            spot: dict['spot']['amount'],
+            buy: dict['buy']['amount'],
+            sell: dict['sell']['amount'],
+            time: Date()
+        }
+
+        return data
+    }
 }
