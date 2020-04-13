@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { Schema } = require('mongoose')
+const Schema = mongoose.Schema
 
 const PriceSchema = new Schema({
     base: {
@@ -9,7 +9,7 @@ const PriceSchema = new Schema({
     },
     currency: {
         type: String,
-        enum: ['USB', 'GBP', 'EUR'],
+        enum: ['USD', 'GBP', 'EUR'],
         required: true
     },
     buy: {
@@ -26,7 +26,7 @@ const PriceSchema = new Schema({
     },
     time: {
         type: Date,
-        default: Date.now(),
+        default: Date.now,
         index: true,
         required: true
     }

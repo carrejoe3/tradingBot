@@ -7,6 +7,7 @@ const app = express()
 const pricing = require('./pricing')
 const port = process.env.PORT || 5000
 const login = require('./routes/api/users')
+const database = require('./database')
 const priceModel = require('./models/price')
 
 app.use(bodyParser.json())
@@ -16,6 +17,7 @@ app.use('/api/login', login)
 app.listen(port, async () => {
     console.log(`Server started on port ${port}`)
 
+    await database.connect()
     mainLoop()
 })
 
