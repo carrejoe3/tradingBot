@@ -17,5 +17,10 @@ module.exports = {
         return client.getSellPrice({ 'currencyPair' : config.CURRENCY_PAIR }, (err, obj) => {
             err ? reject(err) : resolve(obj.data)
         })
+    }),
+    getSpotPrice: async () => new Promise((resolve, reject) => {
+        return client.getSpotPrice({ 'currencyPair' : config.CURRENCY_PAIR }, (err, obj) => {
+            err ? reject(err) : resolve(obj.data)
+        })
     })
 }

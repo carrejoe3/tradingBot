@@ -27,6 +27,9 @@ const mainLoop = async () => {
 
         const sellPrice = await pricing.getSellPrice()
         console.log(`sell: ${sellPrice.amount}`)
+
+        const spot = await pricing.getSpotPrice()
+        console.log(`spot: ${spot.amount}`)
     } catch (error) {
         console.log(error)
     }
