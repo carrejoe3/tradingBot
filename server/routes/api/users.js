@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
 })
 
 // Add user
-
 router.post('/', async (req, res) => {
     const users = await loadUsersCollection()
 
@@ -25,7 +24,6 @@ router.post('/', async (req, res) => {
 })
 
 // Delete user
-
 router.delete('/:id', async (req, res) => {
     const users = await loadUsersCollection()
 
