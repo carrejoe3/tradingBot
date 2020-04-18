@@ -1,4 +1,4 @@
-const CoinbasePro = require('coinbase-pro');
+const CoinbasePro = require('coinbase-pro')
 const config = require('./configuration')
 
 const auth = {
@@ -8,17 +8,21 @@ const auth = {
     useSandbox: true
 }
 
-const client = new CoinbasePro(auth)
-const publicClient = new CoinbasePro.PublicClient()
+// const client = new CoinbasePro(auth)
+const publicClient = new CoinbasePro.PublicClient();
 
 const product = 'BTC-GBP'
 
 async function getHistoricalRates () {
-    const results = await publicClient.getProductHistoricRates(product, {
-        granularity: 300
-    })
+    try {
+        const results = await publicClient.getProductHistoricRates(product, {
+            granularity: 300
+        })
 
-    console.log(results)
+        console.log(results)
+    } catch(error) {
+        console.error(error)
+    }
 }
 
 getHistoricalRates()
