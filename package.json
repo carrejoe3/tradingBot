@@ -1,0 +1,22 @@
+{
+  "name": "bittrader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carrejoe3/tradingBot.git"
+  },
+  "author": "Joe Carré",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carrejoe3/tradingBot/issues"
+  },
+  "homepage": "https://github.com/carrejoe3/tradingBot#readme",
+  "dependencies": {
+    "coinbase-pro-node": "^1.8.1"
+  }
+}
